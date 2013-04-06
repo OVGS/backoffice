@@ -1,0 +1,4 @@
+ovgs_backoffice:
+    resource: "@OVGSBackofficeBundle/Resources/config/routing.yml"
+    prefix:   /
+

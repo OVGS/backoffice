@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<!-- start: Header -->
+{% include 'header.html.twig' %}
+<!-- start: Header -->
+
+<div class="container-fluid">
+    
+    <!--fluid-row-->
+    <div class="row-fluid">
+
+        <!-- Start: Main Menu -->
+        {# include 'menu-left.html.twig' #}
+        <!-- End: Main Menu -->
+
+        <noscript>
+        <div class="alert alert-block span11">
+            <h4 class="alert-heading">Warning!</h4>
+            <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+        </div>
+        </noscript>
+
+        <!-- Start: Main content -->
+        <div id="content">
+            {% block content %}  {% endblock %}           
+        </div>
+        <!-- End: Main content -->
+        
+    </div>
+    <!--/fluid-row-->
+    
+    <!-- Start: Modal -->
+    {% include 'modal.html.twig' %}
+    <!-- End: Modal -->
+    
+    <div class="clearfix"></div>
+    
+    <!-- Start: Footer -->
+    {% include 'footer.html.twig' %}
+    <!-- End: Footer -->
+    
+</div>
+{% endblock %}

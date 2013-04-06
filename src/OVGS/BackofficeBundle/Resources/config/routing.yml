@@ -1,0 +1,11 @@
+ovgs_backoffice_homepage:
+    pattern:  /
+    defaults: { _controller: OVGSBackofficeBundle:Default:index }
+
+login:
+    pattern: /login
+    defaults: { _controller: OVGSBackofficeBundle:Secured:login }
+
+logout:
+    pattern: /logout
+    defaults: { _controller: OVGSBackofficeBundle:Secured:logout }
