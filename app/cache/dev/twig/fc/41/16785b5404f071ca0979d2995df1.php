@@ -244,7 +244,7 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
         <!-- start: User Dropdown -->
         <li class=\"dropdown\">
             <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">
-                <i class=\"halflings-icon white user\"></i> Łukasz Holeczek
+                <i class=\"halflings-icon white user\"></i> Lucas Vazquez
                 <span class=\"caret\"></span>
             </a>
             <ul class=\"dropdown-menu\">
@@ -264,6 +264,6 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,  92 => 27,  85 => 42,  83 => 41,  76 => 36,  74 => 35,  63 => 27,  50 => 16,  48 => 15,  38 => 7,  36 => 6,  32 => 12,  29 => 3,);
+        return array (  19 => 1,);
     }
 }
