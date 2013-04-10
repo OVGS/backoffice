@@ -202,26 +202,42 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // ovgs_backoffice_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'ovgs_backoffice_homepage');
+        if (0 === strpos($pathinfo, '/secured')) {
+            // secured_home
+            if (0 === strpos($pathinfo, '/secured/hello') && preg_match('#^/secured/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'secured_home')), array (  '_controller' => 'OVGS\\SecuredBundle\\Controller\\DefaultController::indexAction',));
             }
 
-            return array (  '_controller' => 'OVGS\\BackofficeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ovgs_backoffice_homepage',);
+            if (0 === strpos($pathinfo, '/secured/log')) {
+                if (0 === strpos($pathinfo, '/secured/login')) {
+                    // secured_login
+                    if ($pathinfo === '/secured/login') {
+                        return array (  '_controller' => 'OVGS\\SecuredBundle\\Controller\\DefaultController::loginAction',  '_route' => 'secured_login',);
+                    }
+
+                    // secured_login_check
+                    if ($pathinfo === '/secured/login_check') {
+                        return array (  '_controller' => 'OVGS\\SecuredBundle\\Controller\\DefaultController::loginCheckAction',  '_route' => 'secured_login_check',);
+                    }
+
+                }
+
+                // secured_logout
+                if ($pathinfo === '/secured/logout') {
+                    return array (  '_controller' => 'OVGS\\SecuredBundle\\Controller\\DefaultController::logoutAction',  '_route' => 'secured_logout',);
+                }
+
+            }
+
         }
 
-        if (0 === strpos($pathinfo, '/log')) {
-            // login
-            if ($pathinfo === '/login') {
-                return array (  '_controller' => 'OVGS\\BackofficeBundle\\Controller\\SecuredController::loginAction',  '_route' => 'login',);
+        // backoffice_home
+        if (rtrim($pathinfo, '/') === '/backoffice') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'backoffice_home');
             }
 
-            // logout
-            if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'OVGS\\BackofficeBundle\\Controller\\SecuredController::logoutAction',  '_route' => 'logout',);
-            }
-
+            return array (  '_controller' => 'OVGS\\BackofficeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'backoffice_home',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

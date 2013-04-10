@@ -1,0 +1,33 @@
+ModuleCategory:
+    type: entity
+    table: module_category
+    fields:
+        id:
+            id: true
+            type: boolean
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        moduleCategory:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: module_category
+        priority:
+            type: boolean
+            nullable: false
+        icon:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified_at
+    lifecycleCallbacks: {  }

@@ -1,4 +1,8 @@
+ovgs_secured:
+    resource: "@OVGSSecuredBundle/Resources/config/routing.yml"
+    prefix:   /secured
+
 ovgs_backoffice:
     resource: "@OVGSBackofficeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /backoffice
 

@@ -1,0 +1,37 @@
+Role:
+    type: entity
+    table: role
+    fields:
+        id:
+            id: true
+            type: boolean
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        role:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+        description:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified_at
+    manyToMany:
+        module:
+            targetEntity: Module
+            cascade: {  }
+            mappedBy: role
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

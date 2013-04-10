@@ -1,0 +1,70 @@
+Module:
+    type: entity
+    table: module
+    fields:
+        id:
+            id: true
+            type: smallint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        module:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        url:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        icon:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        toolTip:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: tool_tip
+        shortcut:
+            type: boolean
+            nullable: true
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified_at
+    manyToMany:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            mappedBy: null
+            inversedBy: module
+            joinTable:
+                name: module_role
+                joinColumns:
+                    -
+                        name: module_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: role_id
+                        referencedColumnName: id
+            orderBy: null
+    manyToOne:
+        moduleCategory:
+            targetEntity: ModuleCategory
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                module_category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,16 @@
+secured_home:
+    pattern:  /hello/{name}
+    defaults: { _controller: OVGSSecuredBundle:Default:index }
+    
+secured_login:
+    pattern: /login
+    defaults: { _controller: OVGSSecuredBundle:Default:login }
+    
+secured_login_check:
+    pattern: /login_check
+    defaults: { _controller: OVGSSecuredBundle:Default:loginCheck }
+
+secured_logout:
+    pattern: /logout
+    defaults: { _controller: OVGSSecuredBundle:Default:logout }
+
