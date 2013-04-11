@@ -1,0 +1,69 @@
+Administrators:
+    type: entity
+    table: administrators
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+        firstName:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: first_name
+        lastName:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: last_name
+        userName:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: user_name
+        email:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        salt:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+        password:
+            type: string
+            length: 32
+            fixed: false
+            nullable: true
+        isActive:
+            type: boolean
+            nullable: true
+            column: is_active
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        modifiedAt:
+            type: datetime
+            nullable: true
+            column: modified_at
+    oneToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                role_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -21,6 +21,7 @@
       <parameter key="JMSSecurityExtraBundle">JMS\SecurityExtraBundle\JMSSecurityExtraBundle</parameter>
       <parameter key="OVGSBackofficeBundle">OVGS\BackofficeBundle\OVGSBackofficeBundle</parameter>
       <parameter key="OVGSSecuredBundle">OVGS\SecuredBundle\OVGSSecuredBundle</parameter>
+      <parameter key="OVGSTestBundle">OVGS\TestBundle\OVGSTestBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -473,8 +474,8 @@
     <parameter key="jms_di_extra.disable_grep">false</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
     <parameter key="jms_di_extra.cache_warmer.controller_file_blacklist" type="collection"/>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_51652d6c81e13.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_5166a2e0dfe3e.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -1762,14 +1763,6 @@
             <argument type="collection">
               <argument type="service" id="security.user.provider.concrete.chain_provider"/>
               <argument type="service" id="security.user.provider.concrete.in_memory"/>
-              <argument type="service">
-                <service class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
-                  <argument type="service" id="doctrine"/>
-                  <argument>OVGSSecuredBundle:User</argument>
-                  <argument>userName</argument>
-                  <argument>null</argument>
-                </service>
-              </argument>
             </argument>
             <argument>secured_area</argument>
             <argument type="service" id="monolog.logger.security"/>
@@ -2256,8 +2249,8 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_51652d6c81e13.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_5166a2e0dfe3e.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
@@ -2267,6 +2260,7 @@
                 <argument type="collection">
                   <argument key="OVGSBackofficeBundle">OVGS\BackofficeBundle\Entity</argument>
                   <argument key="OVGSSecuredBundle">OVGS\SecuredBundle\Entity</argument>
+                  <argument key="OVGSTestBundle">OVGS\TestBundle\Entity</argument>
                 </argument>
               </call>
               <call method="setMetadataCacheImpl">
@@ -2306,6 +2300,7 @@
                           <argument type="collection">
                             <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Entity</argument>
                             <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Entity</argument>
+                            <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Entity</argument>
                           </argument>
                         </service>
                       </argument>
@@ -2318,10 +2313,24 @@
                           <argument type="collection">
                             <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Entity</argument>
                             <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Entity</argument>
+                            <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Entity</argument>
                           </argument>
                         </service>
                       </argument>
                       <argument>OVGS\SecuredBundle\Entity</argument>
+                    </call>
+                    <call method="addDriver">
+                      <argument type="service">
+                        <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                          <argument type="collection">
+                            <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Entity</argument>
+                            <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Entity</argument>
+                            <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Entity</argument>
+                          </argument>
+                        </service>
+                      </argument>
+                      <argument>OVGS\TestBundle\Entity</argument>
                     </call>
                   </service>
                 </argument>
@@ -2759,7 +2768,14 @@
       <argument>true</argument>
     </service>
     <service id="security.encoder_factory" class="Symfony\Component\Security\Core\Encoder\EncoderFactory">
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="Symfony\Component\Security\Core\User\User" type="collection">
+          <argument key="class">%security.encoder.plain.class%</argument>
+          <argument key="arguments" type="collection">
+            <argument>false</argument>
+          </argument>
+        </argument>
+      </argument>
     </service>
     <service id="twig.loader" class="Symfony\Bundle\TwigBundle\Loader\FilesystemLoader">
       <tag name="twig.loader"/>
@@ -2795,6 +2811,10 @@
       <call method="addPath">
         <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Resources/views</argument>
         <argument>OVGSSecured</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Resources/views</argument>
+        <argument>OVGSTest</argument>
       </call>
       <call method="addPath">
         <argument>/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/Acme/DemoBundle/Resources/views</argument>

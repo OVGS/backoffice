@@ -296,11 +296,11 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_51652d6c81e13.php';
+        require_once '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_5166a2e0dfe3e.php';
 
         $a = $this->get('annotation_reader');
 
@@ -313,14 +313,15 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\Common\Cache\ArrayCache();
         $d->setNamespace('sf2orm_default_793b14dce3e857ebb6551d0f564fb9dc');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Entity', 1 => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Entity'));
+        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Entity', 1 => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Entity', 2 => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Entity'));
 
         $f = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $f->addDriver($e, 'OVGS\\BackofficeBundle\\Entity');
         $f->addDriver($e, 'OVGS\\SecuredBundle\\Entity');
+        $f->addDriver($e, 'OVGS\\TestBundle\\Entity');
 
         $g = new \Doctrine\ORM\Configuration();
-        $g->setEntityNamespaces(array('OVGSBackofficeBundle' => 'OVGS\\BackofficeBundle\\Entity', 'OVGSSecuredBundle' => 'OVGS\\SecuredBundle\\Entity'));
+        $g->setEntityNamespaces(array('OVGSBackofficeBundle' => 'OVGS\\BackofficeBundle\\Entity', 'OVGSSecuredBundle' => 'OVGS\\SecuredBundle\\Entity', 'OVGSTestBundle' => 'OVGS\\TestBundle\\Entity'));
         $g->setMetadataCacheImpl($b);
         $g->setQueryCacheImpl($c);
         $g->setResultCacheImpl($d);
@@ -335,7 +336,7 @@ class appDevDebugProjectContainer extends Container
         $h = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $g);
         $this->get('doctrine.orm.default_manager_configurator')->configure($h);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($h, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($h, $this);
     }
 
     /**
@@ -1584,7 +1585,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_EncoderFactoryService()
     {
-        return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array());
+        return $this->services['security.encoder_factory'] = new \Symfony\Component\Security\Core\Encoder\EncoderFactory(array('Symfony\\Component\\Security\\Core\\User\\User' => array('class' => 'Symfony\\Component\\Security\\Core\\Encoder\\PlaintextPasswordEncoder', 'arguments' => array(0 => false))));
     }
 
     /**
@@ -1701,7 +1702,7 @@ class appDevDebugProjectContainer extends Container
         $j = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($h, array('login_path' => 'secured_login', 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false));
         $j->setProviderKey('secured_area');
 
-        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($g, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.chain_provider'), 1 => $this->get('security.user.provider.concrete.in_memory'), 2 => new \Symfony\Bridge\Doctrine\Security\User\EntityUserProvider($this->get('doctrine'), 'OVGSSecuredBundle:User', 'userName', NULL)), 'secured_area', $a, $c), 2 => $i, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $h, 'secured_area', $j, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $h, array('login_path' => 'secured_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'secured_login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $g, $f, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $h, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $h, 'secured_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.secured_area'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($g, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('security.user.provider.concrete.chain_provider'), 1 => $this->get('security.user.provider.concrete.in_memory')), 'secured_area', $a, $c), 2 => $i, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), $h, 'secured_area', $j, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $h, array('login_path' => 'secured_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'secured_login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $g, $f, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $h, 'secured_area', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $h, 'secured_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -2724,6 +2725,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/BackofficeBundle/Resources/views', 'OVGSBackoffice');
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/SecuredBundle/Resources/views', 'OVGSSecured');
+        $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/OVGS/TestBundle/Resources/views', 'OVGSTest');
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/src/Acme/DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
         $instance->addPath('/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
@@ -2846,7 +2848,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -3240,6 +3242,7 @@ class appDevDebugProjectContainer extends Container
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
                 'OVGSBackofficeBundle' => 'OVGS\\BackofficeBundle\\OVGSBackofficeBundle',
                 'OVGSSecuredBundle' => 'OVGS\\SecuredBundle\\OVGSSecuredBundle',
+                'OVGSTestBundle' => 'OVGS\\TestBundle\\OVGSTestBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3720,8 +3723,8 @@ class appDevDebugProjectContainer extends Container
             'jms_di_extra.cache_warmer.controller_file_blacklist' => array(
 
             ),
-            'jms_di_extra.doctrine_integration.entity_manager.file' => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_51652d6c81e13.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51652d6c81e13_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => '/Users/lucasv/Documents/Projects/local.backoffice.ovg.net/app/cache/dev/jms_diextra/doctrine/EntityManager_5166a2e0dfe3e.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager5166a2e0dfe3e_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),

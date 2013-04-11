@@ -17,6 +17,7 @@ class User implements UserInterface, \Serializable
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
      */
     private $id;
 
@@ -89,19 +90,6 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="modified_at", type="datetime", nullable=true)
      */
     private $modifiedAt;
-
-    /**
-     * @var \Role
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @ORM\OneToOne(targetEntity="Role")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="role_id", referencedColumnName="id")
-     * })
-     */
-    private $role;
-
 
     public function __construct()
     {
@@ -347,29 +335,6 @@ class User implements UserInterface, \Serializable
     public function getModifiedAt()
     {
         return $this->modifiedAt;
-    }
-
-    /**
-     * Set role
-     *
-     * @param \OVGS\BackofficeBundle\Entity\Role $role
-     * @return Adminstrators
-     */
-    public function setRole(\OVGS\BackofficeBundle\Entity\Role $role)
-    {
-        $this->role = $role;
-    
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \OVGS\BackofficeBundle\Entity\Role 
-     */
-    public function getRole()
-    {
-        return $this->role;
     }
     
     /**

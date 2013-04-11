@@ -16,6 +16,7 @@ class Administrators
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
      */
     private $id;
 
@@ -93,7 +94,6 @@ class Administrators
      * @var \Role
      *
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      * @ORM\OneToOne(targetEntity="Role")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="role_id", referencedColumnName="id")

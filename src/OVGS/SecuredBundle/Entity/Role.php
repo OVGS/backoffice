@@ -53,15 +53,15 @@ class Role
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Module", mappedBy="role")
-     */
-    private $module;
+     *
+    private $module;*/
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->module = new \Doctrine\Common\Collections\ArrayCollection();
+       // $this->module = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -172,31 +172,31 @@ class Role
      *
      * @param \OVGS\SecuredBundle\Entity\Module $module
      * @return Role
-     */
+     *
     public function addModule(\OVGS\SecuredBundle\Entity\Module $module)
     {
         $this->module[] = $module;
     
         return $this;
-    }
+    }*/
 
     /**
      * Remove module
      *
      * @param \OVGS\SecuredBundle\Entity\Module $module
-     */
+     *
     public function removeModule(\OVGS\SecuredBundle\Entity\Module $module)
     {
         $this->module->removeElement($module);
-    }
+    }*/
 
     /**
      * Get module
      *
      * @return \Doctrine\Common\Collections\Collection 
-     */
+     *
     public function getModule()
     {
         return $this->module;
-    }
+    }*/
 }

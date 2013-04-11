@@ -19,9 +19,10 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
         echo "<div class=\"nav-no-collapse header-nav\">
     <ul class=\"nav pull-right\">
         <li class=\"dropdown hidden-phone\">
-            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">
+            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" data-rel=\"tooltip\" data-original-title=\"Notificaciones\">
                 <i class=\"halflings-icon white warning-sign\"></i>
             </a>
+            <!--    
             <ul class=\"dropdown-menu notifications\">
                 <li>
                     <span class=\"dropdown-menu-title\">You have 11 notifications</span>
@@ -80,12 +81,14 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
                     <a class=\"dropdown-menu-sub-footer\">View all notifications</a>
                 </li>\t
             </ul>
+             -->
         </li>
         <!-- start: Notifications Dropdown -->
         <li class=\"dropdown hidden-phone\">
-            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">
+            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" data-rel=\"tooltip\" data-original-title=\"Tareas pendientes\">
                 <i class=\"halflings-icon white tasks\"></i>
             </a>
+            <!--
             <ul class=\"dropdown-menu tasks\">
                 <li>
                     <span class=\"dropdown-menu-title\">You have 17 tasks in progress</span>
@@ -139,13 +142,15 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
                     <a class=\"dropdown-menu-sub-footer\">View all tasks</a>
                 </li>\t
             </ul>
+            -->       
         </li>
         <!-- end: Notifications Dropdown -->
         <!-- start: Message Dropdown -->
         <li class=\"dropdown hidden-phone\">
-            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">
+            <a class=\"btn dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" data-rel=\"tooltip\" data-original-title=\"Mensajes\">
                 <i class=\"halflings-icon white envelope\"></i>
             </a>
+            <!--
             <ul class=\"dropdown-menu messages\">
                 <li>
                     <span class=\"dropdown-menu-title\">You have 9 messages</span>
@@ -234,10 +239,11 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
                     <a class=\"dropdown-menu-sub-footer\">View all messages</a>
                 </li>\t
             </ul>
+            -->
         </li>
         <!-- end: Message Dropdown -->
         <li>
-            <a class=\"btn\" href=\"#\">
+            <a class=\"btn\" href=\"#\" data-rel=\"tooltip\" data-original-title=\"Configuracion\">
                 <i class=\"halflings-icon white wrench\"></i>
             </a>
         </li>
@@ -249,7 +255,10 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
             </a>
             <ul class=\"dropdown-menu\">
                 <li><a href=\"#\"><i class=\"halflings-icon white user\"></i> Profile</a></li>
-                <li><a href=\"login.html\"><i class=\"halflings-icon white off\"></i> Logout</a></li>
+                <li><a href=\"";
+        // line 240
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getUrl("backoffice_home"), "html", null, true);
+        echo "\"><i class=\"halflings-icon white off\"></i> Logout</a></li>
             </ul>
         </li>
         <!-- end: User Dropdown -->
@@ -262,8 +271,13 @@ class __TwigTemplate_fc4116785b5404f071ca0979d2995df1 extends Twig_Template
         return "menu-header.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  19 => 1,  246 => 77,  242 => 76,  238 => 75,  234 => 74,  230 => 73,  226 => 72,  222 => 71,  218 => 70,  214 => 69,  210 => 68,  206 => 67,  202 => 66,  198 => 65,  194 => 64,  190 => 63,  186 => 62,  182 => 61,  178 => 60,  174 => 59,  170 => 58,  166 => 57,  162 => 56,  158 => 55,  154 => 54,  150 => 53,  146 => 52,  142 => 51,  138 => 50,  134 => 49,  129 => 48,  126 => 47,  121 => 44,  114 => 22,  110 => 21,  106 => 20,  101 => 19,  98 => 18,  92 => 7,  85 => 79,  79 => 45,  77 => 44,  69 => 39,  55 => 31,  47 => 25,  45 => 18,  31 => 7,  23 => 1,  90 => 27,  83 => 47,  81 => 41,  74 => 36,  72 => 35,  61 => 27,  48 => 16,  36 => 6,  32 => 12,  62 => 35,  54 => 13,  49 => 11,  46 => 10,  40 => 8,  38 => 7,  35 => 5,  29 => 3,);
+        return array (  260 => 240,  19 => 1,);
     }
 }

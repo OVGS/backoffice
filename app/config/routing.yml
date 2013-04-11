@@ -1,3 +1,7 @@
+ovgs_test:
+    resource: "@OVGSTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ovgs_secured:
     resource: "@OVGSSecuredBundle/Resources/config/routing.yml"
     prefix:   /secured

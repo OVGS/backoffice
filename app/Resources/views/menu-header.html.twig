@@ -1,9 +1,10 @@
 <div class="nav-no-collapse header-nav">
     <ul class="nav pull-right">
         <li class="dropdown hidden-phone">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" data-rel="tooltip" data-original-title="Notificaciones">
                 <i class="halflings-icon white warning-sign"></i>
             </a>
+            <!--    
             <ul class="dropdown-menu notifications">
                 <li>
                     <span class="dropdown-menu-title">You have 11 notifications</span>
@@ -62,12 +63,14 @@
                     <a class="dropdown-menu-sub-footer">View all notifications</a>
                 </li>	
             </ul>
+             -->
         </li>
         <!-- start: Notifications Dropdown -->
         <li class="dropdown hidden-phone">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" data-rel="tooltip" data-original-title="Tareas pendientes">
                 <i class="halflings-icon white tasks"></i>
             </a>
+            <!--
             <ul class="dropdown-menu tasks">
                 <li>
                     <span class="dropdown-menu-title">You have 17 tasks in progress</span>
@@ -121,13 +124,15 @@
                     <a class="dropdown-menu-sub-footer">View all tasks</a>
                 </li>	
             </ul>
+            -->       
         </li>
         <!-- end: Notifications Dropdown -->
         <!-- start: Message Dropdown -->
         <li class="dropdown hidden-phone">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#" data-rel="tooltip" data-original-title="Mensajes">
                 <i class="halflings-icon white envelope"></i>
             </a>
+            <!--
             <ul class="dropdown-menu messages">
                 <li>
                     <span class="dropdown-menu-title">You have 9 messages</span>
@@ -216,10 +221,11 @@
                     <a class="dropdown-menu-sub-footer">View all messages</a>
                 </li>	
             </ul>
+            -->
         </li>
         <!-- end: Message Dropdown -->
         <li>
-            <a class="btn" href="#">
+            <a class="btn" href="#" data-rel="tooltip" data-original-title="Configuracion">
                 <i class="halflings-icon white wrench"></i>
             </a>
         </li>
@@ -231,7 +237,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li><a href="#"><i class="halflings-icon white user"></i> Profile</a></li>
-                <li><a href="login.html"><i class="halflings-icon white off"></i> Logout</a></li>
+                <li><a href="{{ url('backoffice_home') }}"><i class="halflings-icon white off"></i> Logout</a></li>
             </ul>
         </li>
         <!-- end: User Dropdown -->

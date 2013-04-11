@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new OVGS\BackofficeBundle\OVGSBackofficeBundle(),
             new OVGS\SecuredBundle\OVGSSecuredBundle(),
+            new OVGS\TestBundle\OVGSTestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
