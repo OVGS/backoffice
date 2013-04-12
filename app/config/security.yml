@@ -51,7 +51,8 @@ security:
                 
             logout:
                 path:   secured_logout
-                target: /                
+                target: secured_login
+                invalidate_session: false
             
            # http_basic:
             #    realm: "Secured Area"      
